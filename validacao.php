@@ -17,9 +17,10 @@ $usuario = $_POST['usuario'];
 $senha = $_POST['senha'];
 
 // Validação do usuário/senha digitados
-$sql = "SELECT `id`, `nome`, `nivel` FROM `usuarios` WHERE (`usuario` = '".$usuario ."') AND (`senha` = '". sha1($senha) ."') AND (`ativo` = 1) LIMIT 1";
-$query = mysqli_query($conexao, $sql);
+$sql = "SELECT * FROM `usuarios` WHERE (`usuario` = '$usuario') AND (`senha` = '$senha') AND (`ativo` = 1) LIMIT 1";
 echo $sql;
+$query = mysqli_query($conexao, $sql);
+
 if ($num = mysqli_num_rows($query)) {
     // Salva os dados encontrados na variável $resultado
     $resultado = mysqli_fetch_assoc($query);
